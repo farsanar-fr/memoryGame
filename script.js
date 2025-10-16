@@ -6,13 +6,13 @@ function init() {
   startGame();
   flip();
 }
-$(document).on("keypress", function (e) {
-  if (e.key == "Enter") {
+$(document).on("click", function (e) {
+  //if (e.key == "Enter") {
     console.log("KEY PRESSED");
     $(".msg").addClass("hidden");
 
     init();
-  }
+ // }
 });
 function randNum(item) {
   return Math.floor(Math.random() * item.length);
