@@ -8,3 +8,13 @@
 {
     display: none;
 }
+@media (max-width: 500px) {
+    .card-back,.card-front {
+        width: 5rem;
+    }
+    .game-area
+    {
+        grid-template-columns: repeat(2, auto);
+        gap: 0.5rem;
+    }
+}

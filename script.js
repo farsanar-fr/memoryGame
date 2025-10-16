@@ -1,7 +1,7 @@
 let openCount = 0;
 let remaining = 0;
 let images = ["apple", "watermelon", "grapes"];
-let round = 3;
+let round = 1;
 function init() {
   startGame();
   flip();
