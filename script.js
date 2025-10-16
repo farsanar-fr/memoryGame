@@ -6,7 +6,7 @@ function init() {
   startGame();
   flip();
 }
-$(document).on("click", function (e) {
+$(document).on("click touchstart", function (e) {
   //if (e.key == "Enter") {
     console.log("KEY PRESSED");
     $(".msg").addClass("hidden");
