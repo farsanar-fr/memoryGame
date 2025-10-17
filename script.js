@@ -8,6 +8,13 @@ function init() {
 }
 $(document).on("click touchstart", function (e) {
   //if (e.key == "Enter") {
+
+  console.log("KEY PRESSED");
+  $(".msg").addClass("hidden");
+  $(document).off("click touchstart");
+  init();
+  // }
+
   console.log("KEY PRESSED");
   $(".msg").addClass("hidden");
   $(document).off("click touchstart");
