@@ -1,15 +1,19 @@
-:root
-{
-    --body-color:#FFF9c4;
-    --text-color:#37474f;
+:root {
+  --body-color: #FFF9c4;
+  --text-color: #37474f;
 }
-body{
-    background-color: var(--body-color);
-    font-family:"Bungee", sans-serif;
-     font-weight:bolder;
-     font-size: xx-large;
-     color: var(--text-color);
+
+body {
+  background-color: var(--body-color);
+  font-family: "Bungee", sans-serif;
+  font-weight: bolder;
+  font-size: xx-large;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
 }
+
+/* GAME OVER BOX */
 .game-over {
   width: 30%;
   text-align: center;
@@ -17,89 +21,100 @@ body{
   border-radius: 5px;
   position: fixed;
   top: 30%;
-  left: 30%;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 4;
   background-color: white;
 }
+
+/* OVERLAY */
 .overlay {
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  opacity: 0.5;
   z-index: 3;
 }
-.rst
-{
-    font-size: xx-large;
-    color:var(--text-color);
-    cursor: pointer;
-}
-.game-area
-{
-    display: grid;
-    justify-content: center;
-     
-}
-.card
-{
-    background-color: var(--body-color);
-    border: none;
-    
-}
-.card-front,.card-back
-{
-    width: 10rem;
-    border:10px solid rgba(0, 0, 0, 0.553);
-    border-radius: 10px;
-    background-color: rgb(251, 244, 244);
-    display: flex;
-    justify-content: center;
-}
-.matched
-{
-    border:10px solid #98ff09;
-}
-.hidden
-{
-    display: none;
-}
-@media (max-width: 900px) {
-    .card-back,.card-front {
-        width: 6rem;
-    }
-    .game-area
-    {
-        grid-template-columns: repeat(4, auto);
-        gap: 0.5rem;
-    }
-}
-@media (max-width: 600px) {
-    .card-back,.card-front {
-        width: 6rem;
-    }
-    .game-area
-    {
-        grid-template-columns: repeat(4, auto);
-        gap: 1rem;
-    }
-    .game-over {
-        width:50%;
-    }
-}
-@media (max-width: 300px) {
-    .card-back,.card-front {
-        width: 5rem;
-    }
-    .game-area
-    {
-        grid-template-columns: repeat(3, auto);
-        gap: 1rem;
-    }
-    .game-over {
-        width:50%;
-    }
 
+/* RESET BUTTON */
+.rst {
+  font-size: xx-large;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+/* ✅ DEFAULT: LARGE SCREEN — 2 CARDS PER ROW */
+.game-area {
+  display: grid;
+ /* grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;*/
+  justify-items: center;
+  padding: 1rem;
+}
+
+/* CARD STYLES */
+.card {
+  background-color: var(--body-color);
+  border: none;
+}
+
+.card-front,
+.card-back {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 10px solid rgba(0, 0, 0, 0.55);
+  border-radius: 10px;
+  background-color: rgb(251, 244, 244);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.matched {
+  border: 10px solid #98ff09;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ✅ MEDIUM SCREENS — 3 CARDS PER ROW */
+@media (max-width: 900px) {
+  .game-area {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+  }
+  .game-over {
+    width: 40%;
+  }
+}
+
+/* ✅ SMALL SCREENS — 4 CARDS PER ROW */
+@media (max-width: 600px) {
+  .game-area {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.6rem;
+  }
+  .card-front, .card-back {
+    border-width: 8px;
+  }
+  .game-over {
+    width: 60%;
+  }
+}
+
+/* ✅ EXTRA SMALL SCREENS — STILL 4 PER ROW, SMALLER */
+@media (max-width: 400px) {
+  .game-area {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.4rem;
+  }
+  .card-front, .card-back {
+    border-width: 6px;
+  }
+  .game-over {
+    width: 70%;
+  }
 }
