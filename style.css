@@ -82,8 +82,8 @@ body{
     }
     .game-area
     {
-        grid-template-columns: repeat(4, auto);
-        gap: 0.5rem;
+        grid-template-columns: repeat(3, auto);
+        gap: 1rem;
     }
     .game-over {
         width:50%;
@@ -95,8 +95,8 @@ body{
     }
     .game-area
     {
-        grid-template-columns: repeat(4, auto);
-        gap: 0.5rem;
+        grid-template-columns: repeat(3, auto);
+        gap: 1rem;
     }
     .game-over {
         width:50%;
