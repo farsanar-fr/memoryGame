@@ -75,7 +75,6 @@ body{
         grid-template-columns: repeat(4, auto);
         gap: 0.5rem;
     }
-    
 }
 @media (max-width: 600px) {
     .card-back,.card-front {
@@ -86,7 +85,9 @@ body{
         grid-template-columns: repeat(4, auto);
         gap: 0.5rem;
     }
-    
+    .game-over {
+        width:50%;
+    }
 }
 @media (max-width: 300px) {
     .card-back,.card-front {
@@ -96,6 +97,9 @@ body{
     {
         grid-template-columns: repeat(4, auto);
         gap: 0.5rem;
+    }
+    .game-over {
+        width:50%;
     }
 
 }
