@@ -1,25 +1,36 @@
 let openCount = 0;
 let remaining = 0;
-let images = ["apple", "watermelon", "grapes","banana","blueberry","cherry","orange","pineapple","pomegranate","rApple","rasberry","strawberry"];
+let images = [
+  "apple",
+  "watermelon",
+  "grapes",
+  "banana",
+  "blueberry",
+  "cherry",
+  "orange",
+  "pineapple",
+  "pomegranate",
+  "rApple",
+  "rasberry",
+  "strawberry",
+];
 let round = 1;
 let tries;
 
-function init() {;
+function init() {
   startGame();
-  $('.attempts').removeClass("hidden").text(`Attempts Left: ${tries}`);
+  $(".attempts").removeClass("hidden").text(`Attempts Left: ${tries}`);
   flip();
 }
 $(document).on("click  touchstart keypress", function (e) {
   console.log(e);
-  
- if (e.type=="click"||e.type=="touchstart"||e.key == "Enter") {
 
-  console.log("KEY PRESSED");
-  $(".msg").addClass("hidden");
-  $(document).off("click touchstart keypress");
-  init();
-   }
+  if (e.type == "click" || e.type == "touchstart" || e.key == "Enter") {
+    console.log("KEY PRESSED");
 
+    $(document).off("click touchstart keypress");
+    init();
+  }
 });
 function randNum(item) {
   return Math.floor(Math.random() * item.length);
@@ -27,13 +38,13 @@ function randNum(item) {
 
 function startGame() {
   //let file=images[randNum(images)];
-  
+
   console.log("GAME START");
-  
-  let numOfCard = round<=10?round * 2:20;
- tries=numOfCard;
- console.log(numOfCard,"numofcards");
- 
+  $(".msg").text("ROUND : " + round);
+  let numOfCard = round <= 10 ? round * 2 : 20;
+  tries = numOfCard;
+  console.log(numOfCard, "numofcards");
+
   console.log($(".game-area "));
 
   if (round > 0) {
@@ -91,43 +102,6 @@ function startGame() {
       }
     }
 }
-//     for(let i=0;y<100;i++)
-// {
-//     console.log("line 62 how to solve");
-
-//     n=randNum(numbers);
-
-//     if(num!=n&&numbers[n]!=-1)
-//     {y++;
-//         num=n;
-//         //console.log(file);
-//         document.querySelector(`[data-num="${numbers[n]}"]`).setAttribute('src',`./images/${images[j]}.jpg`);
-//         console.log(numbers[n],"--img",images[j]);
-
-//         numbers[n]=-1;
-//     }
-//     else
-//     {//i--;
-//         i--;
-
-//         console.log("same number generated",n);
-//         console.log("y",y);
-//     }
-// }
-
-// function checkOpen()
-// {
-//     let openCount=0;
-//     document.querySelectorAll('.card-back').forEach(card=>{
-//     if(!card.classList.contains('hidden'))
-//     {openCount++;
-
-//     console.log("open",openCount);
-
-//     }
-//    });
-//    return openCount;
-// }
 function flip() {
   $(".card-front").on("click", function (e) {
     //    let openCount=checkOpen();
@@ -145,39 +119,10 @@ function flip() {
     openCount++;
     // }
     if (openCount === 2) {
-      tries--;
-      if (tries <=0) {
-        $(".game-over h2").text("GAME OVER - Out of Attempts");
-       // $(".msg h2").after("<h4>Score :" + score + "</h4>");
-
-        $(".game-over").show();
-       
-        $(".overlay").show();
-        $(".rst").on("click", function () {
-         
-          $(".game-over").hide();
-          $(".overlay").hide();
-          round=1;
-          $(".card-front").removeClass("hidden");
-      $(".card-back").addClass("hidden");
-
-      // $('.game-area .row').html('');
-      document.querySelectorAll(".card-back").forEach((el) => {
-        el.remove();
-      });
-      document.querySelectorAll(".card-front").forEach((el) => {
-        el.remove();
-      });
-      document.querySelectorAll(".game-area .row .card").forEach((el) => {
-        el.remove();
-      });
-           init();
-        });
-     
+      
+      checkMatch();
     }
-     checkMatch();
-  }
-});
+  });
 }
 
 function checkMatch() {
@@ -209,9 +154,36 @@ function checkMatch() {
           console.log("firstCard", firstCard);
         } else {
           console.log("NOT MATCHED");
-          
+          tries--;
+      if (tries == 0) {
+        $(".game-over h2").text("GAME OVER - Out of Attempts");
+        // $(".msg h2").after("<h4>Score :" + score + "</h4>");
+
+        $(".game-over").show();
+
+        $(".overlay").show();
+        $(".rst").on("click", function () {
+          $(".game-over").hide();
+          $(".overlay").hide();
+          round = 1;
+          $(".card-front").removeClass("hidden");
+          $(".card-back").addClass("hidden");
+
+          // $('.game-area .row').html('');
+          document.querySelectorAll(".card-back").forEach((el) => {
+            el.remove();
+          });
+          document.querySelectorAll(".card-front").forEach((el) => {
+            el.remove();
+          });
+          document.querySelectorAll(".game-area .row .card").forEach((el) => {
+            el.remove();
+          });
+          init();
+        });
+      }
           setTimeout(() => {
-            $('.attempts').text(`Attempts Left: ${tries}`);
+            $(".attempts").text(`Attempts Left: ${tries}`);
             document.querySelectorAll(".card-back").forEach((card) => {
               if (
                 !card.classList.contains("hidden") &&

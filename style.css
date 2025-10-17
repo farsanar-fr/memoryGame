@@ -1,7 +1,7 @@
 :root
 {
-    --body-color:#121212;
-    --text-color:#90caf9;
+    --body-color:#FFF9c4;
+    --text-color:#37474f;
 }
 body{
     background-color: var(--body-color);
@@ -47,19 +47,21 @@ body{
 {
     background-color: var(--body-color);
     border: none;
+    
 }
 .card-front,.card-back
 {
-    
+    width: 10rem;
     border:10px solid rgba(0, 0, 0, 0.553);
     border-radius: 10px;
     background-color: rgb(251, 244, 244);
     display: flex;
     justify-content: center;
 }
- .card-back,.card-front {
-        width: 10rem;
-    }
+.matched
+{
+    border:10px solid #98ff09;
+}
 .hidden
 {
     display: none;
