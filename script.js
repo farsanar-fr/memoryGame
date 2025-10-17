@@ -1,25 +1,25 @@
 let openCount = 0;
 let remaining = 0;
-let images = ["apple", "watermelon", "grapes"];
+let images = ["apple", "watermelon", "grapes","banana","blueberry","cherry","orange","pineapple","pomegranate","rApple","rasberry","strawberry"];
 let round = 1;
-function init() {
+let tries;
+
+function init() {;
   startGame();
+  $('.attempts').removeClass("hidden").text(`Attempts Left: ${tries}`);
   flip();
 }
-$(document).on("click touchstart", function (e) {
-  //if (e.key == "Enter") {
+$(document).on("click  touchstart keypress", function (e) {
+  console.log(e);
+  
+ if (e.type=="click"||e.type=="touchstart"||e.key == "Enter") {
 
   console.log("KEY PRESSED");
   $(".msg").addClass("hidden");
-  $(document).off("click touchstart");
+  $(document).off("click touchstart keypress");
   init();
-  // }
+   }
 
-  console.log("KEY PRESSED");
-  $(".msg").addClass("hidden");
-  $(document).off("click touchstart");
-  init();
-  // }
 });
 function randNum(item) {
   return Math.floor(Math.random() * item.length);
@@ -27,7 +27,13 @@ function randNum(item) {
 
 function startGame() {
   //let file=images[randNum(images)];
-  let numOfCard = round * 2;
+  
+  console.log("GAME START");
+  
+  let numOfCard = round<=10?round * 2:20;
+ tries=numOfCard;
+ console.log(numOfCard,"numofcards");
+ 
   console.log($(".game-area "));
 
   if (round > 0) {
@@ -36,8 +42,8 @@ function startGame() {
       console.log("numOfCard", numOfCard);
 
       $(".game-area .row").append(
-        `<div class=" col-3 card " style="width: 10rem;"><img src="./images/default.png" class="card-img-top card-front" alt="Card ${card}"><img src="./images/watermelon.jpg" class="card-img-top hidden card-back" alt="Card 3" data-num="${card}"></div>
-        <div class=" col-3 card " style="width: 10rem;"><img src="./images/default.png" class="card-img-top card-front" alt="Card ${
+        `<div class="w-auto  card" ><img src="./images/test.png" class="card-img-top card-front" alt="Card ${card}"><img src="./images/watermelon.jpg" class="card-img-top hidden card-back" alt="Card 3" data-num="${card}"></div>
+        <div class="w-auto  card " ><img src="./images/test.png" class="card-img-top card-front" alt="Card ${
           card + 1
         }"><img src="./images/watermelon.jpg" class="card-img-top hidden card-back" alt="Card 3" data-num="${
           card + 1
@@ -139,9 +145,39 @@ function flip() {
     openCount++;
     // }
     if (openCount === 2) {
-      checkMatch();
+      tries--;
+      if (tries <=0) {
+        $(".game-over h2").text("GAME OVER - Out of Attempts");
+       // $(".msg h2").after("<h4>Score :" + score + "</h4>");
+
+        $(".game-over").show();
+       
+        $(".overlay").show();
+        $(".rst").on("click", function () {
+         
+          $(".game-over").hide();
+          $(".overlay").hide();
+          round=1;
+          $(".card-front").removeClass("hidden");
+      $(".card-back").addClass("hidden");
+
+      // $('.game-area .row').html('');
+      document.querySelectorAll(".card-back").forEach((el) => {
+        el.remove();
+      });
+      document.querySelectorAll(".card-front").forEach((el) => {
+        el.remove();
+      });
+      document.querySelectorAll(".game-area .row .card").forEach((el) => {
+        el.remove();
+      });
+           init();
+        });
+     
     }
-  });
+     checkMatch();
+  }
+});
 }
 
 function checkMatch() {
@@ -173,7 +209,9 @@ function checkMatch() {
           console.log("firstCard", firstCard);
         } else {
           console.log("NOT MATCHED");
+          
           setTimeout(() => {
+            $('.attempts').text(`Attempts Left: ${tries}`);
             document.querySelectorAll(".card-back").forEach((card) => {
               if (
                 !card.classList.contains("hidden") &&
@@ -206,7 +244,7 @@ function checkMatch() {
       document.querySelectorAll(".card-front").forEach((el) => {
         el.remove();
       });
-      document.querySelectorAll(".game-area .row .col-3").forEach((el) => {
+      document.querySelectorAll(".game-area .row .card").forEach((el) => {
         el.remove();
       });
       console.log("================================");

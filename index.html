@@ -16,18 +16,40 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"></script>
       <script src="https://kit.fontawesome.com/ce6c2570a2.js" crossorigin="anonymous"></script>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double+Ink:wght@100..900&family=Bitcount+Prop+Single+Ink:wght@100..900&family=Bungee&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="./style.css">
     <title>Memory Game</title>
 </head>
 <body>
     <h1 class="container text-center">Memory Game</h1>
     <h3 class="msg container text-center">Click to start the game</h3>
-
+<div class="game-over text-center hidden">
+        <h2></h2>
+        <button class=" rst">Restart</button>
+        
+      </div>
+      <div class="overlay hidden"></div>
     <div class="game-area container ">
+        <h2 class="attempts hidden">Attempts Left:</h2>
         <div class="row"></div>
             
             
             <!--
+
+            <div class=" w-auto card " >
+            <div  class="card-img-top card-front"  ><img src="./images/test.png" alt=""></div>
+            <img src="./images/apple.jpg" class="card-img-top hidden card-back"  alt="Card 1" data-num="1">
+            
+
+            </div>
+            <div class="w-auto card " >
+                <div  class="card-img-top card-front"  >?</div>
+                <img src="./images/watermelon.jpg"  class="card-img-top hidden card-back" alt="Card 2" data-num="2">
+            </div>
             <div class=" col-3 card " style="width: 10rem;">
             <img src="./images/default.png" class="card-img-top card-front"  alt="Card 1" >
             <img src="./images/apple.jpg" class="card-img-top hidden card-back"  alt="Card 1" data-num="1">
