@@ -50,7 +50,7 @@ body{
 }
 .card-front,.card-back
 {
-    height: 10rem;
+    
     border:10px solid rgba(0, 0, 0, 0.553);
     border-radius: 10px;
     background-color: rgb(251, 244, 244);
@@ -88,7 +88,7 @@ body{
 }
 @media (max-width: 300px) {
     .card-back,.card-front {
-        width: 3rem;
+        width: 5rem;
     }
     .game-area
     {
