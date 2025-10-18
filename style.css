@@ -87,7 +87,9 @@ body{
     .card-back,.card-front {
         width: 5rem;
     }
-    
+    .game-over {
+        width:50%;
+    }
     
 }
 
@@ -95,5 +97,7 @@ body{
     .card-back,.card-front {
         width: 4rem;
     }
-
+     .game-over {
+        width:50%;
+    }
 }
